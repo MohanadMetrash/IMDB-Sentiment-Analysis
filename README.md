@@ -37,7 +37,6 @@ The model is a Sequential Keras model built with a hybrid architecture designed 
 4.  **Dense Layers**: Fully connected layers for final classification, with Dropout and Batch Normalization for regularization.
 5.  **Output Layer**: A single neuron with a sigmoid activation function to output a probability score for the "positive" class.
 
-![Model Architecture Diagram](./model_architecture.png)
 
 ## Repository Contents
 
@@ -56,7 +55,7 @@ To run this project, follow these steps:
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+git clone https://github.com/MohanadMetrash/IMDB-Sentiment-Analysis.git
 cd YOUR_REPOSITORY_NAME
 ```
 
@@ -88,13 +87,10 @@ Once all files are in place, open `IMDB PROJECT.ipynb` in Jupyter Lab or Jupyter
 
 The trained model file (`model.keras`) is too large for this GitHub repository. You can download it directly from the link below.
 
-- **Download Link:** **[Google Drive - IMDB Model]([YOUR GOOGLE DRIVE LINK HERE])**
+- **Download Link:** **[Google Drive - IMDB Model]([https://drive.google.com/drive/folders/1uT9U8_0uFbHsvW9Sk_4tqqk3iG0FbL-0])**
 
 After downloading, place the `model.keras` file in the main project directory alongside `IMDB PROJECT.ipynb` and `tokenizer.pickle`. You can then use the final cells of the notebook to load the model and make predictions without needing to re-train it.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Acknowledgments
 - The [IMDb Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/).
