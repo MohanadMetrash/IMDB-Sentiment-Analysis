@@ -39,7 +39,6 @@ The model is a Sequential Keras model composed of the following layers:
 5.  **Dense Layers**: Fully connected layers with Dropout and Batch Normalization for regularization.
 6.  **Output Layer**: A final Dense layer with a sigmoid activation function to output a probability between 0 (negative) and 1 (positive).
 
-![Model Architecture Diagram](model_architecture.png)
 
 ## Results
 
@@ -50,32 +49,6 @@ The model was trained for 10 epochs and achieved the following performance on th
 
 The training and validation accuracy/loss curves show good generalization with early stopping preventing significant overfitting.
 
-## Directory Structure
-
-```
-IMDB-Sentiment-Analysis/
-│
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-│
-├── data/
-│
-├── notebooks/
-│   └── imdb_project_exploration.ipynb
-│
-├── saved_model/
-│   ├── model.keras
-│   └── tokenizer.pkl
-│
-└── src/
-    ├── __init__.py
-    ├── config.py
-    ├── model.py
-    ├── predict.py
-    └── train.py
-```
 
 ## Setup and Installation
 
@@ -83,7 +56,7 @@ Follow these steps to set up the project environment.
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/IMDB-Sentiment-Analysis.git
+git clone https://github.com/MohanadMetrash/IMDB-Sentiment-Analysis.git
 cd IMDB-Sentiment-Analysis
 ```
 
@@ -124,7 +97,7 @@ data/
 
 ### Training the Model
 
-To train the model from scratch, run the `train.py` script. This will process the data, build the model, train it, and save the final `model.keras` and `tokenizer.pkl` to the `saved_model/` directory.
+To train the model from scratch, run the `imdb_project_exploration.ipynb` script. This will process the data, build the model, train it, and save the final `model.keras` and `tokenizer.pkl` to the `saved_model/` directory.
 
 ```bash
 python src/train.py
