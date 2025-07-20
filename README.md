@@ -7,7 +7,7 @@
 
 A deep learning project for classifying IMDB movie reviews as either positive or negative. This repository contains the code for data preprocessing, model training using a hybrid CNN-BiLSTM architecture, and scripts for inference on new reviews.
 
-![Training History Plot](./assets/training_history.png)
+![Training History Plot](/training_history.png)
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -39,7 +39,7 @@ The model is a Sequential Keras model composed of the following layers:
 5.  **Dense Layers**: Fully connected layers with Dropout and Batch Normalization for regularization.
 6.  **Output Layer**: A final Dense layer with a sigmoid activation function to output a probability between 0 (negative) and 1 (positive).
 
-![Model Architecture Diagram](./assets/model_architecture.png)
+![Model Architecture Diagram](model_architecture.png)
 
 ## Results
 
