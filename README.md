@@ -9,16 +9,15 @@ This repository contains a deep learning project for classifying IMDB movie revi
 
 ![Training History Plot](./training_history.png)
 
-## Table of Contents
+## 📝 Table of Contents
 - [Project Overview](#project-overview)
 - [Model Architecture](#model-architecture)
 - [Repository Contents](#repository-contents)
 - [Setup & Usage](#setup--usage)
 - [Download the Saved Model](#download-the-saved-model)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-## Project Overview
+## 📊 Project Overview
 
 This project implements a sentiment analysis model to determine whether a movie review is positive or negative. The core components are:
 - **Text Preprocessing**: Cleaning raw text by removing HTML tags, punctuation, numbers, and stopwords.
@@ -27,7 +26,7 @@ This project implements a sentiment analysis model to determine whether a movie 
 - **Training & Evaluation**: The model is trained on the popular IMDB dataset and evaluated on a hold-out test set.
 - **Inference**: The notebook includes code to test the trained model on new, unseen reviews.
 
-## Model Architecture
+## 🧠 Model Architecture
 
 The model is a Sequential Keras model built with a hybrid architecture designed to effectively process textual data.
 
@@ -38,7 +37,7 @@ The model is a Sequential Keras model built with a hybrid architecture designed 
 5.  **Output Layer**: A single neuron with a sigmoid activation function to output a probability score for the "positive" class.
 
 
-## Repository Contents
+## 📂 Repository Contents
 
 This repository has a flat structure, with all key assets in the root directory.
 
@@ -49,7 +48,7 @@ This repository has a flat structure, with all key assets in the root directory.
 - `tokenizer.pickle`: The saved Keras tokenizer fitted on the training data. This is required to process new text for prediction.
 - **`model.keras` (External)**: The trained model file is not in this repository due to its size. See the section below on how to download it.
 
-## Setup & Usage
+## 🚀 Setup & Usage
 
 To run this project, follow these steps:
 
@@ -92,6 +91,6 @@ The trained model file (`model.keras`) is too large for this GitHub repository. 
 After downloading, place the `model.keras` file in the main project directory alongside `IMDB PROJECT.ipynb` and `tokenizer.pickle`. You can then use the final cells of the notebook to load the model and make predictions without needing to re-train it.
 
 
-## Acknowledgments
+## 🙏 Acknowledgments
 - The [IMDb Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/).
 - The [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/) project by Stanford University.
