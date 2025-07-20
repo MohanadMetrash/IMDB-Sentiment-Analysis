@@ -5,127 +5,96 @@
 ![Keras](https://img.shields.io/badge/Keras-2.x-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-A deep learning project for classifying IMDB movie reviews as either positive or negative. This repository contains the code for data preprocessing, model training using a hybrid CNN-BiLSTM architecture, and scripts for inference on new reviews.
+This repository contains a deep learning project for classifying IMDB movie reviews as either positive or negative. The entire workflow, from data preprocessing to model training and evaluation, is contained within the main Jupyter Notebook. The model uses a hybrid CNN-BiLSTM architecture with pre-trained GloVe embeddings.
 
-![Training History Plot](/training_history.png)
+![Training History Plot](./training_history.png)
 
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Model Architecture](#model-architecture)
-- [Results](#results)
-- [Directory Structure](#directory-structure)
-- [Setup and Installation](#setup-and-installation)
-- [How to Use](#how-to-use)
+- [Repository Contents](#repository-contents)
+- [Setup & Usage](#setup--usage)
+- [Download the Saved Model](#download-the-saved-model)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Project Overview
 
-This project implements a sentiment analysis model to determine whether a movie review is positive or negative. The workflow includes:
-- **Text Preprocessing**: Cleaning raw text by removing HTML tags, punctuation, and stopwords.
-- **Word Embeddings**: Utilizing pre-trained 100-dimensional GloVe embeddings to represent words as dense vectors.
-- **Hybrid Model**: A deep learning model combining Convolutional Neural Networks (CNNs) for feature extraction and Bidirectional LSTMs (BiLSTMs) for capturing sequential context.
-- **Training & Evaluation**: Training the model on the IMDB dataset and evaluating its performance.
-- **Inference**: Scripts to predict the sentiment of new, unseen reviews from text input or a CSV file.
+This project implements a sentiment analysis model to determine whether a movie review is positive or negative. The core components are:
+- **Text Preprocessing**: Cleaning raw text by removing HTML tags, punctuation, numbers, and stopwords.
+- **Word Embeddings**: Utilizing pre-trained 100-dimensional GloVe embeddings to represent words as dense vectors, capturing semantic meaning.
+- **Hybrid Model**: A deep learning model that combines Convolutional Neural Networks (CNNs) for feature extraction and Bidirectional LSTMs (BiLSTMs) for understanding sequential context.
+- **Training & Evaluation**: The model is trained on the popular IMDB dataset and evaluated on a hold-out test set.
+- **Inference**: The notebook includes code to test the trained model on new, unseen reviews.
 
 ## Model Architecture
 
-The model is a Sequential Keras model composed of the following layers:
+The model is a Sequential Keras model built with a hybrid architecture designed to effectively process textual data.
 
-1.  **Embedding Layer**: Initializes word embeddings with pre-trained GloVe vectors. Set to be non-trainable to retain learned knowledge.
-2.  **Conv1D Layers**: Two sets of 1D convolutional layers to extract local features and patterns from the text sequence.
-3.  **Bidirectional LSTM**: A BiLSTM layer to capture contextual information from both forward and backward directions in the sequence.
-4.  **GlobalMaxPooling1D**: Reduces the dimensionality of the LSTM output.
-5.  **Dense Layers**: Fully connected layers with Dropout and Batch Normalization for regularization.
-6.  **Output Layer**: A final Dense layer with a sigmoid activation function to output a probability between 0 (negative) and 1 (positive).
+1.  **Embedding Layer**: Initializes word representations using pre-trained GloVe vectors.
+2.  **Conv1D Layers**: Extract local n-gram features from the text.
+3.  **Bidirectional LSTM Layer**: Captures long-range dependencies and contextual information from the entire review.
+4.  **Dense Layers**: Fully connected layers for final classification, with Dropout and Batch Normalization for regularization.
+5.  **Output Layer**: A single neuron with a sigmoid activation function to output a probability score for the "positive" class.
 
+![Model Architecture Diagram](./model_architecture.png)
 
-## Results
+## Repository Contents
 
-The model was trained for 10 epochs and achieved the following performance on the test set:
+This repository has a flat structure, with all key assets in the root directory.
 
--   **Test Accuracy**: ~86%
--   **Test Loss**: ~0.35
+- `IMDB PROJECT.ipynb`: The main Jupyter Notebook containing all the code for data loading, preprocessing, model definition, training, and prediction.
+- `README.md`: This file, providing an overview and instructions for the project.
+- `model_architecture.png`: A diagram visualizing the neural network architecture.
+- `training_history.png`: A plot showing the model's accuracy and loss during training.
+- `tokenizer.pickle`: The saved Keras tokenizer fitted on the training data. This is required to process new text for prediction.
+- **`model.keras` (External)**: The trained model file is not in this repository due to its size. See the section below on how to download it.
 
-The training and validation accuracy/loss curves show good generalization with early stopping preventing significant overfitting.
+## Setup & Usage
 
-
-## Setup and Installation
-
-Follow these steps to set up the project environment.
+To run this project, follow these steps:
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/MohanadMetrash/IMDB-Sentiment-Analysis.git
-cd IMDB-Sentiment-Analysis
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+cd YOUR_REPOSITORY_NAME
 ```
 
-**2. Create and activate a virtual environment (recommended):**
+**2. Install Dependencies:**
+It is highly recommended to use a virtual environment. The required libraries are listed in the import cells of the notebook. You can install them using pip:
 ```bash
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On macOS/Linux
-source venv/bin/activate
+pip install pandas numpy scikit-learn tensorflow keras nltk seaborn matplotlib
 ```
 
-**3. Install the required packages:**
-```bash
-pip install -r requirements.txt
-```
-
-**4. Download NLTK stopwords:**
+**3. Download NLTK Stopwords:**
+Run the following commands in a Python interpreter or a notebook cell:
 ```python
 import nltk
 nltk.download('stopwords')
 ```
 
-**5. Download GloVe Embeddings:**
-The model requires the GloVe pre-trained word embeddings.
-- Download `glove.6B.zip` from [Stanford's GloVe page](https://nlp.stanford.edu/projects/glove/).
-- Unzip the file and place `glove.6B.100d.txt` inside the `data/` directory.
+**4. Download Datasets and Embeddings:**
+You will need to download the following files and place them in the main project directory:
+- **IMDB Dataset**: Download `a1_IMDB_Dataset.csv` and `a3_IMDb_Unseen_Reviews.csv`.
+- **GloVe Embeddings**: Download `glove.6B.zip` from the [official GloVe website](https://nlp.stanford.edu/projects/glove/). Unzip it and place the `glove.6B.100d.txt` file in the project directory.
 
-After these steps, your `data/` directory should look like this:
-```
-data/
-├── a1_IMDB_Dataset.csv
-├── a3_IMDb_Unseen_Reviews.csv
-└── glove.6B.100d.txt
-```
+**5. Download the Pre-trained Model:**
+Follow the instructions in the [Download the Saved Model](#download-the-saved-model) section below to get the `model.keras` file.
 
-## How to Use
+**6. Run the Notebook:**
+Once all files are in place, open `IMDB PROJECT.ipynb` in Jupyter Lab or Jupyter Notebook and run the cells sequentially. You can either re-train the model or use the pre-trained model for prediction.
 
-### Training the Model
+## Download the Saved Model
 
-To train the model from scratch, run the `imdb_project_exploration.ipynb` script. This will process the data, build the model, train it, and save the final `model.keras` and `tokenizer.pkl` to the `saved_model/` directory.
+The trained model file (`model.keras`) is too large for this GitHub repository. You can download it directly from the link below.
 
-```bash
-python src/train.py
-```
+- **Download Link:** **[Google Drive - IMDB Model]([YOUR GOOGLE DRIVE LINK HERE])**
 
-### Making Predictions
-
-Use the `predict.py` script to get sentiment predictions. It loads the pre-trained model from `saved_model/`.
-
-**To predict a single review:**
-```bash
-python src/predict.py --text "This movie was absolutely fantastic, a true masterpiece of cinema!"
-```
-**Expected Output:**
-```
-Prediction: [0.98] -> Positive
-```
-
-**To predict on a CSV file:**
-The script can also read a CSV file. Make sure the file has a column named `Review Text`.
-```bash
-python src/predict.py --file data/a3_IMDb_Unseen_Reviews.csv
-```
-This will generate a `predictions.csv` file in the root directory with the results.
+After downloading, place the `model.keras` file in the main project directory alongside `IMDB PROJECT.ipynb` and `tokenizer.pickle`. You can then use the final cells of the notebook to load the model and make predictions without needing to re-train it.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Acknowledgments
 - The [IMDb Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/).
