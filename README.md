@@ -86,7 +86,7 @@ Once all files are in place, open `IMDB PROJECT.ipynb` in Jupyter Lab or Jupyter
 
 The trained model file (`model.keras`) is too large for this GitHub repository. You can download it directly from the link below.
 
-- **Download Link:** **[Google Drive - IMDB Model]([https://drive.google.com/drive/folders/1uT9U8_0uFbHsvW9Sk_4tqqk3iG0FbL-0])**
+- **Download Link:** **[Google Drive - IMDB Model](https://drive.google.com/drive/folders/1uT9U8_0uFbHsvW9Sk_4tqqk3iG0FbL-0)**
 
 After downloading, place the `model.keras` file in the main project directory alongside `IMDB PROJECT.ipynb` and `tokenizer.pickle`. You can then use the final cells of the notebook to load the model and make predictions without needing to re-train it.
 
